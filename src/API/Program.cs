@@ -1,6 +1,11 @@
+using medEstudios.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// se añaden los servicios de la infraestructura
+builder.Services.AddInfrastructure();
 
 
 

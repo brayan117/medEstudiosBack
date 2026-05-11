@@ -15,6 +15,15 @@
           }
         }
       },
+      "FirebirdSql.Data.FirebirdClient/10.3.4": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        }
+      },
       "fo-dicom/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -286,6 +295,27 @@
         "lib/netstandard2.1/CommunityToolkit.HighPerformance.dll",
         "lib/netstandard2.1/CommunityToolkit.HighPerformance.pdb",
         "lib/netstandard2.1/CommunityToolkit.HighPerformance.xml"
+      ]
+    },
+    "FirebirdSql.Data.FirebirdClient/10.3.4": {
+      "sha512": "lmaY+XQvnhPl1YRrY+lzTZPD88YDbllelN5RhFMrzinqSmjWpWZRE0A4AI1L2mPBNAI346Q8MHAvnJjDPd7VnQ==",
+      "type": "package",
+      "path": "firebirdsql.data.firebirdclient/10.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "firebird-logo.png",
+        "firebirdsql.data.firebirdclient.10.3.4.nupkg.sha512",
+        "firebirdsql.data.firebirdclient.nuspec",
+        "lib/net48/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net5.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net6.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net7.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net8.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll",
+        "license.txt"
       ]
     },
     "fo-dicom/5.2.6": {
@@ -714,6 +744,7 @@
     "net10.0": [
       "Application >= 1.0.0",
       "Domain >= 1.0.0",
+      "FirebirdSql.Data.FirebirdClient >= 10.3.4",
       "fo-dicom >= 5.2.6"
     ]
   },
@@ -767,6 +798,10 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
+          "FirebirdSql.Data.FirebirdClient": {
+            "target": "Package",
+            "version": "[10.3.4, )"
+          },
           "fo-dicom": {
             "target": "Package",
             "version": "[5.2.6, )"
