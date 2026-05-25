@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VRAcewgVpD4=",
+  "dgSpecHash": "In+EkQ4RuUg=",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\Application\\Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512"
+  ],
   "logs": []
 }
