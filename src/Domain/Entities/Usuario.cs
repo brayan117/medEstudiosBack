@@ -13,5 +13,6 @@ namespace Domain.Entities
         public bool estado { get; set; }
         public DateTime ultimo_login { get; set; }
         public DateTime fecha_creacion { get; set; }
+        public int tipo_usuario_id { get; set; }
     }
 }

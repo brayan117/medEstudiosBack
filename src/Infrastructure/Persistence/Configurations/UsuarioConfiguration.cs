@@ -10,39 +10,44 @@ public class UsuarioConfiguration
     public void Configure(EntityTypeBuilder<Usuario> entity)
     {
         // Nombre tabla
-        entity.ToTable("usuarios");
+        entity.ToTable("USUARIOS");
 
         // Primary Key
         entity.HasKey(x => x.id);
 
         // id
         entity.Property(x => x.id)
-            .HasColumnName("id");
+            .HasColumnName("ID");
 
         // username
         entity.Property(x => x.username)
-            .HasColumnName("username")
+            .HasColumnName("USERNAME")
             .HasMaxLength(100)
             .IsRequired();
 
         // password_hash
         entity.Property(x => x.password_hash)
-            .HasColumnName("password_hash")
+            .HasColumnName("PASSWORD_HASH")
             .HasMaxLength(500)
             .IsRequired();
 
         // estado
         entity.Property(x => x.estado)
-            .HasColumnName("estado")
+            .HasColumnName("ESTADO")
+            .IsRequired();
+
+        // tipo_usuario_id
+        entity.Property(x => x.tipo_usuario_id)
+            .HasColumnName("TIPO_USUARIO_ID")
             .IsRequired();
 
         // ultimo_login
         entity.Property(x => x.ultimo_login)
-            .HasColumnName("ultimo_login");
+            .HasColumnName("ULTIMO_LOGIN");
 
         // fecha_creacion
         entity.Property(x => x.fecha_creacion)
-            .HasColumnName("fecha_creacion")
+            .HasColumnName("FECHA_CREACION")
             .IsRequired();
     }
 }
