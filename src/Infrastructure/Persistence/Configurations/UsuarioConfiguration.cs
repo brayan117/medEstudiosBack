@@ -49,5 +49,11 @@ public class UsuarioConfiguration
         entity.Property(x => x.fecha_creacion)
             .HasColumnName("FECHA_CREACION")
             .IsRequired();
+
+        //relacion con tipo de usuario
+        entity.HasOne(x => x.TipoUsuario)
+            .WithMany(x => x.Usuarios)
+            .HasForeignKey(x => x.tipo_usuario_id)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
@@ -18,14 +19,17 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public Task<Usuario?> GetUserByUsernameAsync(string username)
+        public async Task<Usuario?> GetUserByUsernameAsync(string username)
         {
-            return Task.FromResult(_context.Usuarios.FirstOrDefault(u => u.username == username));
+            return await _context.Usuarios
+            .Include(u => u.TipoUsuario)
+            .FirstOrDefaultAsync(u => u.username == username);
         }
 
         public async Task UpdateLastLoginAsync(int userId)
         {
             var usuario = await _context.Usuarios.FindAsync(userId);
+            
             if (usuario != null)
             {
                 usuario.ultimo_login = DateTime.Now;

@@ -36,7 +36,12 @@ public class JwtGenerator : IJWTGenerator
 
             new Claim(
                 JwtRegisteredClaimNames.UniqueName,
-                usuario.username)
+                usuario.username),
+
+            new Claim(
+                ClaimTypes.Role,
+                usuario.TipoUsuario.nombre 
+            )
         };
 
         var token = new JwtSecurityToken(

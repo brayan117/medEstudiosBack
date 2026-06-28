@@ -23,6 +23,8 @@ public static class DependencyInjection
 
         services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 
+        services.AddScoped<ITiposUsuariosRepository, TiposUsuariosRepository>();
+
         services.AddScoped<AuthService>();
 
         return services;

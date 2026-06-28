@@ -18,7 +18,9 @@ public class TestController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var usuarios = await _context.Usuarios.ToListAsync();
+        var usuarios = await _context.Usuarios
+        .Include(u => u.TipoUsuario)
+        .ToListAsync();
 
         return Ok(usuarios);
     }
