@@ -36,5 +36,13 @@ namespace Infrastructure.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        
+        public async Task<List<Usuario>> GetAllUsersAsync()
+        {
+            return await _context.Usuarios
+                .Include(u => u.TipoUsuario)
+                .ToListAsync();
+        }
     }
+    
 }
