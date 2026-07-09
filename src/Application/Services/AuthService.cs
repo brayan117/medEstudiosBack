@@ -34,6 +34,7 @@ namespace Application.Services
             }
             
             var token = _jwtGenerator.GenerateToken(usuario);
+            await _usuariosRepository.UpdateLastLoginAsync(usuario.id);
             return new LoginResponseDTO
             {
                 token = token,

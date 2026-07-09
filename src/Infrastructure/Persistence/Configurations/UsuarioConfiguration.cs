@@ -1,6 +1,7 @@
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Persistence.Configurations;
 
@@ -17,7 +18,8 @@ public class UsuarioConfiguration
 
         // id
         entity.Property(x => x.id)
-            .HasColumnName("ID");
+            .HasColumnName("ID")
+            .ValueGeneratedNever();
 
         // username
         entity.Property(x => x.username)
@@ -34,7 +36,9 @@ public class UsuarioConfiguration
         // estado
         entity.Property(x => x.estado)
             .HasColumnName("ESTADO")
-            .IsRequired();
+            .HasColumnType("INTEGER")
+            .IsRequired()
+            .HasConversion(new BoolToZeroOneConverter<int>());
 
         // tipo_usuario_id
         entity.Property(x => x.tipo_usuario_id)
