@@ -67,6 +67,7 @@ namespace Application.Services
             }
             //mapear de usuarioRequestDto a Usuario
             Usuario usuario = UsuarioMapper.ToEntity(dto);
+            usuario.password_hash = BCrypt.Net.BCrypt.HashPassword(dto.password_hash);
             
             //llamar al repositorio
             var usuarioCreado = await _repository.AddUserAsync(usuario);
