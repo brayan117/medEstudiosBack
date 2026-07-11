@@ -41,5 +41,13 @@ public class UsuariosController : ControllerBase
         var result = await _usuariosService.CreateUserAsync(dto);
         return Ok(result);
     }
-    
+
+    [Authorize(Roles = Roles.ADMIN)]
+    [HttpDelete("{userId}")]
+    public async Task<IActionResult> DeleteUserAsync(int userId)
+    {
+        var result = await _usuariosService.DeleteUserAsync(userId);
+        return Ok(result);
+    }
+      
 }

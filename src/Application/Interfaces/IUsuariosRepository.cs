@@ -23,6 +23,8 @@ namespace Application.Interfaces
         //agregar nuevo usuario
         Task<Usuario> AddUserAsync(Usuario usuario);
 
+        //Eliminar usuario 
+        Task DeleteUserAsync(int userId);
 
     }
 }

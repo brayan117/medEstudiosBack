@@ -3,6 +3,7 @@ using Application.DTOs.usuarios;
 using Application.Interfaces;
 using Application.Mappers;
 using Domain.Entities;
+using Application.DTOs;
 
 namespace Application.Services
 {
@@ -74,6 +75,28 @@ namespace Application.Services
             
             //mapear de Usuario a UsuarioResponseDto
             return UsuarioMapper.ToResponse(usuarioCreado);
+        }
+
+        public async Task<ResponseDTO<UsuarioResponseDTO>> DeleteUserAsync(int userId)
+        {
+            var usuario = await _repository.GetUserByIdAsync(userId);
+            
+            if (usuario == null)
+            {
+                throw new Exception("Usuario no encontrado");
+            }
+            
+            // Cargar la relación TipoUsuario antes de eliminar
+            var usuarioConTipo = await _repository.GetUserByUsernameAsync(usuario.username);
+            
+            await _repository.DeleteUserAsync(userId);
+
+            return new ResponseDTO<UsuarioResponseDTO>
+            {
+                success = true,
+                message = "Usuario eliminado correctamente",
+                data = UsuarioMapper.ToResponse(usuarioConTipo)
+            };
         }
     }
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.DTOs.Auth;
+using Domain.Entities.constants;
+using Domain.Entities.Constants;
 
 namespace Application.Services
 {
@@ -11,11 +13,16 @@ namespace Application.Services
     {
         private readonly IUsuariosRepository _usuariosRepository;
         private readonly IJWTGenerator _jwtGenerator;
+        private readonly IAuditoriaService _auditoriaService;
 
-        public AuthService(IUsuariosRepository usuariosRepository, IJWTGenerator jwtGenerator)
+        public AuthService(
+            IUsuariosRepository usuariosRepository, 
+            IJWTGenerator jwtGenerator, 
+            IAuditoriaService auditoriaService)
         {
             _usuariosRepository = usuariosRepository;
             _jwtGenerator = jwtGenerator;
+            _auditoriaService = auditoriaService;
         }
 
 
@@ -35,6 +42,16 @@ namespace Application.Services
             
             var token = _jwtGenerator.GenerateToken(usuario);
             await _usuariosRepository.UpdateLastLoginAsync(usuario.id);
+
+            await _auditoriaService.CrearAuditoria(
+                AuditoriaAcciones.LOGIN,
+                Tablas.USUARIOS,
+                usuario.id,
+                "Inicio de sesión exitoso",
+                usuario.id,
+                usuario.username,
+                usuario.TipoUsuario.nombre);
+
             return new LoginResponseDTO
             {
                 token = token,

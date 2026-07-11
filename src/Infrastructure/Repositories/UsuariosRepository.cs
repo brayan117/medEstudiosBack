@@ -87,6 +87,12 @@ namespace Infrastructure.Repositories
             return usuario;
         }
 
+        public async Task DeleteUserAsync(int userId)
+        {
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            _context.Usuarios.Remove(usuario);
+            await _context.SaveChangesAsync();
+        }
     }
     
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "g5t4pAeIexA=",
+  "dgSpecHash": "VJ7MLD5Grn0=",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\DELL\\.nuget\\packages\\firebirdsql.entityframeworkcore.firebird\\13.0.0\\firebirdsql.entityframeworkcore.firebird.13.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\fo-dicom\\5.2.6\\fo-dicom.5.2.6.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.8\\microsoft.aspnetcore.authentication.jwtbearer.10.0.8.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.0\\microsoft.aspnetcore.http.2.2.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.7\\microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.hashcode\\6.0.0\\microsoft.bcl.hashcode.6.0.0.nupkg.sha512",
@@ -31,5 +32,30 @@
     "C:\\Users\\DELL\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.7\\swashbuckle.aspnetcore.swaggerui.10.1.7.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.18.0\\system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference Microsoft.AspNetCore.Http no se eliminará. Considere la posibilidad de quitar este paquete de las dependencias, ya que es probable que no sea necesario.",
+      "projectPath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\API\\API.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\API\\API.csproj",
+      "libraryId": "Microsoft.AspNetCore.Http",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.4.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\API\\API.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\DELL\\Documents\\proyecto\\backend\\medEstudios\\src\\API\\API.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

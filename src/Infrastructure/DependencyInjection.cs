@@ -19,15 +19,25 @@ public static class DependencyInjection
             options.UseFirebird(
                 configuration.GetConnectionString("FirebirdConnection")));
 
+        //servicios de repositorio
         services.AddScoped<IJWTGenerator, JwtGenerator>();
 
         services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 
         services.AddScoped<ITiposUsuariosRepository, TiposUsuariosRepository>();
 
+        services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
+
+        //servicios de autenticacion
         services.AddScoped<AuthService>();
 
+        //servicios de negocio
         services.AddScoped<UsuariosService>();
+        services.AddScoped<IAuditoriaService, AuditoriaService>();
+
+        //servicios de current user
+        services.AddScoped<ICurrentUser, CurrentUserService>();
+        services.AddHttpContextAccessor();
 
         return services;
     }
