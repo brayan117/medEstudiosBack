@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
+using Application.DTOs.Filtros;
 using Microsoft.AspNetCore.Authorization;
 using Domain.Entities.constants;
 
@@ -22,6 +23,13 @@ public class AuditoriasController : ControllerBase
     {
         var auditorias = await _auditoriaService.GetAllAuditoriasAsync();
         return Ok(auditorias);
+    }
+
+    [HttpGet("paginado")]
+    public async Task<IActionResult> GetPaginatedAsync([FromQuery] AuditoriasFiltroDTO filtro)
+    {
+        var resultado = await _auditoriaService.GetPaginated(filtro);
+        return Ok(resultado);
     }
 
     [HttpGet("{id}")]

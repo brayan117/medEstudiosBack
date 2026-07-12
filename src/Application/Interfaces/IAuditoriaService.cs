@@ -1,3 +1,5 @@
+using Application.DTOs.Filtros;
+using Application.DTOs.Paginacion;
 using Domain.Entities;
 
 namespace Application.Interfaces;
@@ -9,4 +11,5 @@ public interface IAuditoriaService
     Task<Auditoria?> GetAuditoriaByIdAsync(int id);
     Task<List<Auditoria>> GetAllAuditoriasAsync();
     Task<List<Auditoria>> GetAuditoriasByFechasAsync(DateTime fechaInicio, DateTime fechaFin);
+    Task<PaginacionResponseDTO<Auditoria>> GetPaginated(AuditoriasFiltroDTO filtro);
 }

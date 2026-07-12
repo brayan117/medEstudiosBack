@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.Services;
+using Application.Interfaces;
+using Application.DTOs.Filtros;
 using Microsoft.AspNetCore.Authorization;
 using Domain.Entities.constants;
 using Application.DTOs.usuarios;
@@ -11,9 +12,9 @@ namespace API.Controllers;
 public class UsuariosController : ControllerBase
 {   
 
-    private readonly UsuariosService _usuariosService;
+    private readonly IUsuariosService _usuariosService;
 
-    public UsuariosController(UsuariosService usuariosService)
+    public UsuariosController(IUsuariosService usuariosService)
     {
         _usuariosService = usuariosService;
     }
@@ -24,6 +25,14 @@ public class UsuariosController : ControllerBase
     {
         var usuarios = await _usuariosService.GetAll();
         return Ok(usuarios);
+    }
+
+    [Authorize(Roles = Roles.ADMIN)]
+    [HttpGet("paginado")]
+    public async Task<IActionResult> GetPaginatedAsync([FromQuery] UsuariosFiltroDTO filtro)
+    {
+        var resultado = await _usuariosService.GetPaginated(filtro);
+        return Ok(resultado);
     }
 
     [Authorize(Roles = Roles.ADMIN)]

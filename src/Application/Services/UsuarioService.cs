@@ -4,10 +4,12 @@ using Application.Interfaces;
 using Application.Mappers;
 using Domain.Entities;
 using Application.DTOs;
+using Application.DTOs.Filtros;
+using Application.DTOs.Paginacion;
 
 namespace Application.Services
 {
-    public class UsuariosService
+    public class UsuariosService : IUsuariosService
     {
         private readonly IUsuariosRepository _repository;
 
@@ -29,6 +31,31 @@ namespace Application.Services
                 fechaCreacion = x.fecha_creacion,
                 ultimoLogin = x.ultimo_login
             }).ToList();
+        }
+
+        public async Task<PaginacionResponseDTO<UsuarioResponseDTO>> GetPaginated(UsuariosFiltroDTO filtro)
+        {
+            var (items, totalCount) = await _repository.GetUsersPaginatedAsync(
+                filtro.page, filtro.pageSize,
+                filtro.sort?.campo, filtro.sort?.direccion,
+                filtro.username, filtro.estado, filtro.tipoUsuarioId);
+
+            return new PaginacionResponseDTO<UsuarioResponseDTO>
+            {
+                data = items.Select(x => new UsuarioResponseDTO
+                {
+                    id = x.id,
+                    username = x.username,
+                    estado = x.estado,
+                    tipoUsuario = x.TipoUsuario.nombre,
+                    fechaCreacion = x.fecha_creacion,
+                    ultimoLogin = x.ultimo_login
+                }).ToList(),
+                totalCount = totalCount,
+                page = filtro.page,
+                pageSize = filtro.pageSize,
+                totalPages = (int)Math.Ceiling(totalCount / (double)filtro.pageSize)
+            };
         }
 
         public async Task UpdateLastLoginAsync(int userId)

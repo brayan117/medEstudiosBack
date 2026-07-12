@@ -93,6 +93,39 @@ namespace Infrastructure.Repositories
             _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<(List<Usuario> items, int totalCount)> GetUsersPaginatedAsync(
+            int page, int pageSize, string? sortBy, string? sortDirection,
+            string? username, bool? estado, int? tipoUsuarioId)
+        {
+            var query = _context.Usuarios
+                .Include(u => u.TipoUsuario)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(username))
+                query = query.Where(u => u.username.ToUpper().Contains(username.ToUpper()));
+            if (estado.HasValue)
+                query = query.Where(u => u.estado == estado.Value);
+            if (tipoUsuarioId.HasValue)
+                query = query.Where(u => u.tipo_usuario_id == tipoUsuarioId.Value);
+
+            var totalCount = await query.CountAsync();
+
+            query = (sortBy?.ToLower(), sortDirection?.ToLower()) switch
+            {
+                ("username", "desc") => query.OrderByDescending(u => u.username),
+                ("username", _) => query.OrderBy(u => u.username),
+                ("fecha_creacion", "desc") => query.OrderByDescending(u => u.fecha_creacion),
+                ("fecha_creacion", _) => query.OrderBy(u => u.fecha_creacion),
+                ("estado", "desc") => query.OrderByDescending(u => u.estado),
+                ("estado", _) => query.OrderBy(u => u.estado),
+                (_, "desc") => query.OrderByDescending(u => u.id),
+                _ => query.OrderBy(u => u.id)
+            };
+
+            var items = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            return (items, totalCount);
+        }
     }
     
 }

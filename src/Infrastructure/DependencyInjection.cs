@@ -32,7 +32,7 @@ public static class DependencyInjection
         services.AddScoped<AuthService>();
 
         //servicios de negocio
-        services.AddScoped<UsuariosService>();
+        services.AddScoped<IUsuariosService, UsuariosService>();
         services.AddScoped<IAuditoriaService, AuditoriaService>();
 
         //servicios de current user

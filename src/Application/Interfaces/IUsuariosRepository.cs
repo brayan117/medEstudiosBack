@@ -26,5 +26,10 @@ namespace Application.Interfaces
         //Eliminar usuario 
         Task DeleteUserAsync(int userId);
 
+        //obtener usuarios paginados con filtros
+        Task<(List<Usuario> items, int totalCount)> GetUsersPaginatedAsync(
+            int page, int pageSize, string? sortBy, string? sortDirection,
+            string? username, bool? estado, int? tipoUsuarioId);
+
     }
 }

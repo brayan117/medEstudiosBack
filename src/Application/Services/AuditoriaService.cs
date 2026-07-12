@@ -1,3 +1,5 @@
+using Application.DTOs.Filtros;
+using Application.DTOs.Paginacion;
 using Application.Interfaces;
 using Domain.Entities;
 
@@ -55,5 +57,23 @@ public class AuditoriaService : IAuditoriaService
     public async Task<List<Auditoria>> GetAuditoriasByFechasAsync(DateTime fechaInicio, DateTime fechaFin)
     {
         return await _auditoriaRepository.GetAuditoriasByFechasAsync(fechaInicio, fechaFin);
+    }
+
+    public async Task<PaginacionResponseDTO<Auditoria>> GetPaginated(AuditoriasFiltroDTO filtro)
+    {
+        var (items, totalCount) = await _auditoriaRepository.GetAuditoriasPaginatedAsync(
+            filtro.page, filtro.pageSize,
+            filtro.sort?.campo, filtro.sort?.direccion,
+            filtro.fechaInicio, filtro.fechaFin,
+            filtro.accion, filtro.tablaAfectada, filtro.usuarioId);
+
+        return new PaginacionResponseDTO<Auditoria>
+        {
+            data = items,
+            totalCount = totalCount,
+            page = filtro.page,
+            pageSize = filtro.pageSize,
+            totalPages = (int)Math.Ceiling(totalCount / (double)filtro.pageSize)
+        };
     }
 }
