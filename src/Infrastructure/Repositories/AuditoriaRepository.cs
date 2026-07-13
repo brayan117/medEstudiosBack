@@ -53,7 +53,7 @@ public class AuditoriaRepository: IAuditoriaRepository
         if (fechaInicio.HasValue)
             query = query.Where(a => a.fecha >= fechaInicio.Value);
         if (fechaFin.HasValue)
-            query = query.Where(a => a.fecha <= fechaFin.Value);
+            query = query.Where(a => a.fecha <= fechaFin.Value.AddDays(1).AddTicks(-1));
         if (!string.IsNullOrWhiteSpace(accion))
             query = query.Where(a => a.accion.ToUpper().Contains(accion.ToUpper()));
         if (!string.IsNullOrWhiteSpace(tablaAfectada))
