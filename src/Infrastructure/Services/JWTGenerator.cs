@@ -41,7 +41,10 @@ public class JwtGenerator : IJWTGenerator
             new Claim(
                 ClaimTypes.Role,
                 usuario.TipoUsuario.nombre 
-            )
+            ),
+            new Claim(
+                "estado",
+                usuario.estado.ToString())
         };
 
         var token = new JwtSecurityToken(
