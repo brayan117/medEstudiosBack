@@ -1,7 +1,7 @@
 using Domain.Entities;
 using Application.DTOs.usuarios;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.Repositories
 {
     public interface IUsuariosRepository
     {

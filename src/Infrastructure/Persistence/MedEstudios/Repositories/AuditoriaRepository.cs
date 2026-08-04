@@ -1,16 +1,18 @@
-using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Domain.Entities;
-using Infrastructure.Persistence.Context;
+using Infrastructure.Persistence.MedEstudios;
 using Microsoft.EntityFrameworkCore;
+using Application.Interfaces;
+using Application.Interfaces.Services;
 
-namespace Infrastructure.Repositories;
+namespace Infrastructure.Persistence.MedEstudios.Repositories;
 
 public class AuditoriaRepository: IAuditoriaRepository
 {
 
-    private readonly ApplicationDbContext _context;
+    private readonly MedEstudiosDbContext _context;
 
-    public AuditoriaRepository(ApplicationDbContext context)
+    public AuditoriaRepository(MedEstudiosDbContext context)
     {
         _context = context;
     }

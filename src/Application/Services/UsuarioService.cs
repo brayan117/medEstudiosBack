@@ -1,11 +1,12 @@
 
 using Application.DTOs.usuarios;
-using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Application.Mappers;
 using Domain.Entities;
 using Application.DTOs;
 using Application.DTOs.Filtros;
 using Application.DTOs.Paginacion;
+using Application.Interfaces.Services;
 
 namespace Application.Services
 {

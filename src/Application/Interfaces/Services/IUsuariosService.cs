@@ -3,7 +3,7 @@ using Application.DTOs.Filtros;
 using Application.DTOs.Paginacion;
 using Application.DTOs.usuarios;
 
-namespace Application.Interfaces;
+namespace Application.Interfaces.Services;
 
 public interface IUsuariosService
 {

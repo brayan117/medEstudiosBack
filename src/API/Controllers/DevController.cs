@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Infrastructure.Repositories;
-using Application.Interfaces;
+using Infrastructure.Persistence.MedEstudios.Repositories;
+using Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Application.Interfaces;
+using Application.Interfaces.Services;
 using Application.DTOs.Filtros;
 using Microsoft.AspNetCore.Authorization;
 using Domain.Entities.constants;

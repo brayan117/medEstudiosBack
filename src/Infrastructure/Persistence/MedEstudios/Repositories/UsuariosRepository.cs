@@ -4,17 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Entities;
-using Infrastructure.Persistence.Context;
+using Infrastructure.Persistence.MedEstudios;
 using Microsoft.EntityFrameworkCore;
+using Application.Interfaces.Services;
+using Application.Interfaces.Repositories;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Persistence.MedEstudios.Repositories
 {
     public class UsuariosRepository : IUsuariosRepository
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly MedEstudiosDbContext _context;
 
-        public UsuariosRepository(ApplicationDbContext context)
+        public UsuariosRepository(MedEstudiosDbContext context)
         {
             _context = context;
         }

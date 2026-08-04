@@ -1,5 +1,7 @@
 using Application.DTOs.Filtros;
 using Application.DTOs.Paginacion;
+using Application.Interfaces.Repositories;
+using Application.Interfaces.Services;
 using Application.Interfaces;
 using Domain.Entities;
 

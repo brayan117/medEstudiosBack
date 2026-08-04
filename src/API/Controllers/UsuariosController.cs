@@ -4,6 +4,7 @@ using Application.DTOs.Filtros;
 using Microsoft.AspNetCore.Authorization;
 using Domain.Entities.constants;
 using Application.DTOs.usuarios;
+using Application.Interfaces.Services;
 
 namespace API.Controllers;
 

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Application.DTOs.Auth;
 using Domain.Entities.constants;
 using Domain.Entities.Constants;
+using Application.Interfaces.Services;
+using Application.Interfaces;
 
 namespace Application.Services
 {

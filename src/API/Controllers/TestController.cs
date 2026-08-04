@@ -1,4 +1,4 @@
-using Infrastructure.Persistence.Context;
+using Infrastructure.Persistence.MedEstudios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +8,9 @@ namespace medEstudios.API.Controllers;
 [Route("api/test")]
 public class TestController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly MedEstudiosDbContext _context;
 
-    public TestController(ApplicationDbContext context)
+    public TestController(MedEstudiosDbContext context)
     {
         _context = context;
     }
