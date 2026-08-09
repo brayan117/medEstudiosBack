@@ -9,6 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
+using Infrastructure.Persistence.Salus.Repositories;
+using Application.Interfaces.Repositories.Salus;
+using Application.Interfaces.Services.Salus;
+using Application.Services.Salus;
+
 
 namespace Infrastructure;
 
@@ -26,7 +31,11 @@ public static class DependencyInjection
             options.UseFirebird(
                 configuration.GetConnectionString("SalusConnection")));
 
-        //servicios de repositorio
+        //servicos de repositorio SALUSDB 
+
+        services.AddScoped<IAfiliadoRepository, AfiliadoRepository>();
+
+        //servicios de repositorio base de datos MEDSTUDIOS
         services.AddScoped<IJWTGenerator, JwtGenerator>();
 
         services.AddScoped<IUsuariosRepository, UsuariosRepository>();
@@ -43,6 +52,7 @@ public static class DependencyInjection
         //servicios de negocio
         services.AddScoped<IUsuariosService, UsuariosService>();
         services.AddScoped<IAuditoriaService, AuditoriaService>();
+        services.AddScoped<IAfiliadoService, AfiliadoService>();
 
         //servicios de current user
         services.AddScoped<ICurrentUser, CurrentUserService>();

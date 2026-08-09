@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Domain.Entities.Salus;
 
 namespace Infrastructure.Persistence.Salus;
 
@@ -9,6 +10,8 @@ public class SalusDbContext : DbContext
         : base(options)
     {
     }
+
+    public DbSet<Afiliado> Afiliados => Set<Afiliado>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
