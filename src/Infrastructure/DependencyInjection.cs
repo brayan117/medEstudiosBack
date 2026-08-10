@@ -33,6 +33,8 @@ public static class DependencyInjection
 
         //servicos de repositorio SALUSDB 
 
+        services.AddScoped<IMedicoRepository, MedicoRepository>();
+
         services.AddScoped<IAfiliadoRepository, AfiliadoRepository>();
 
         //servicios de repositorio base de datos MEDSTUDIOS
@@ -53,6 +55,7 @@ public static class DependencyInjection
         services.AddScoped<IUsuariosService, UsuariosService>();
         services.AddScoped<IAuditoriaService, AuditoriaService>();
         services.AddScoped<IAfiliadoService, AfiliadoService>();
+        services.AddScoped<IMedicoService, MedicoService>();
 
         //servicios de current user
         services.AddScoped<ICurrentUser, CurrentUserService>();
