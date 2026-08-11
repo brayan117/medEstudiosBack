@@ -51,7 +51,7 @@ public class JwtGenerator : IJWTGenerator
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(2),
+            expires: DateTime.UtcNow.AddHours(6),
             signingCredentials: credentials);
 
         return new JwtSecurityTokenHandler()
