@@ -7,16 +7,20 @@ using Application.DTOs;
 using Application.DTOs.Filtros;
 using Application.DTOs.Paginacion;
 using Application.Interfaces.Services;
+using Domain.Entities.constants;
+
 
 namespace Application.Services
 {
     public class UsuariosService : IUsuariosService
     {
         private readonly IUsuariosRepository _repository;
+        private readonly IAuditoriaService _auditoriaService;
 
-        public UsuariosService(IUsuariosRepository repository)
+        public UsuariosService(IUsuariosRepository repository, IAuditoriaService auditoriaService)
         {
             _repository = repository;
+            _auditoriaService = auditoriaService;
         }
 
         public async Task<List<UsuarioResponseDTO>> GetAll()
@@ -70,6 +74,7 @@ namespace Application.Services
             
             if (usuario == null)
             {
+                
                 return new ResponseActualizarEstadoDTO
                 {
                     success = false,
@@ -78,6 +83,15 @@ namespace Application.Services
             }
 
             await _repository.UpdateEstadoAsync(usuario, dto.estado);
+
+            await _auditoriaService.CrearAuditoria(
+                AuditoriaAcciones.ACTUALIZAR,
+                "USUARIOS",
+                usuario.id,
+                $"Estado actualizado a: {dto.estado}",
+                usuario.id,
+                usuario.username,
+                usuario.TipoUsuario.nombre);
             
             return new ResponseActualizarEstadoDTO
             {
@@ -100,6 +114,15 @@ namespace Application.Services
             
             //llamar al repositorio
             var usuarioCreado = await _repository.AddUserAsync(usuario);
+
+            await _auditoriaService.CrearAuditoria(
+                AuditoriaAcciones.CREAR,
+                "USUARIOS",
+                usuarioCreado.id,
+                "Usuario creado",
+                usuarioCreado.id,
+                usuarioCreado.username,
+                usuarioCreado.TipoUsuario.nombre);
             
             //mapear de Usuario a UsuarioResponseDto
             return UsuarioMapper.ToResponse(usuarioCreado);
@@ -118,6 +141,15 @@ namespace Application.Services
             var usuarioConTipo = await _repository.GetUserByUsernameAsync(usuario.username);
             
             await _repository.DeleteUserAsync(userId);
+            
+            await _auditoriaService.CrearAuditoria(
+                AuditoriaAcciones.ELIMINAR,
+                "USUARIOS",
+                usuarioConTipo.id,
+                "Usuario eliminado",
+                usuarioConTipo.id,
+                usuarioConTipo.username,
+                usuarioConTipo.TipoUsuario.nombre);
 
             return new ResponseDTO<UsuarioResponseDTO>
             {

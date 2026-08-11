@@ -34,12 +34,22 @@ namespace Application.Services
             
             if (usuario == null)
             {
-                throw new Exception("Usuario no encontrado");
+                return null;
             }
             
             if (!BCrypt.Net.BCrypt.Verify(request.password, usuario.password_hash))
             {
-                throw new Exception("Contraseña incorrecta");
+                await _auditoriaService.CrearAuditoria(
+                    AuditoriaAcciones.FALLO_LOGIN,
+                    Tablas.USUARIOS,
+                    usuario.id,
+                    "Intento de inicio de sesión fallido - contraseña incorrecta",
+                    usuario.id,
+                    usuario.username,
+                    usuario.TipoUsuario.nombre);
+
+                return null;
+
             }
             
             var token = _jwtGenerator.GenerateToken(usuario);

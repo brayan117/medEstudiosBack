@@ -9,4 +9,5 @@ public static class AuditoriaAcciones
     public const string LOGIN = "LOGIN";
     public const string LOGOUT = "LOGOUT";
     public const string ERROR = "ERROR";
+    public const string FALLO_LOGIN = "FALLO_LOGIN";
 }

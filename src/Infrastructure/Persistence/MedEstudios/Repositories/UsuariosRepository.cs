@@ -40,7 +40,9 @@ namespace Infrastructure.Persistence.MedEstudios.Repositories
 
         public async Task<Usuario?> GetUserByIdAsync(int userId)
         {
-            return await _context.Usuarios.FindAsync(userId);
+            return await _context.Usuarios
+                .Include(u => u.TipoUsuario)
+                .FirstOrDefaultAsync(u => u.id == userId);
         }
 
         public async Task UpdateEstadoAsync(Usuario usuario, bool nuevoEstado)
