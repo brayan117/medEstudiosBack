@@ -32,20 +32,15 @@ public static class DependencyInjection
                 configuration.GetConnectionString("SalusConnection")));
 
         //servicos de repositorio SALUSDB 
-
         services.AddScoped<IMedicoRepository, MedicoRepository>();
-
         services.AddScoped<IAfiliadoRepository, AfiliadoRepository>();
+        services.AddScoped<IProcedimientoRepository, ProcedimientoRepository>();
 
         //servicios de repositorio base de datos MEDSTUDIOS
         services.AddScoped<IJWTGenerator, JwtGenerator>();
-
         services.AddScoped<IUsuariosRepository, UsuariosRepository>();
-
         services.AddScoped<ITiposUsuariosRepository, TiposUsuariosRepository>();
-
         services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
-        
         services.AddScoped<ITecnicoRespository, TecnicoRepository>();
 
         //servicios de autenticacion
@@ -55,6 +50,7 @@ public static class DependencyInjection
         services.AddScoped<IUsuariosService, UsuariosService>();
         services.AddScoped<IAuditoriaService, AuditoriaService>();
         services.AddScoped<IAfiliadoService, AfiliadoService>();
+        services.AddScoped<IProcedimientoService, ProcedimientoService>();
         services.AddScoped<IMedicoService, MedicoService>();
 
         //servicios de current user

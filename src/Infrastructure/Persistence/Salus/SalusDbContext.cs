@@ -13,6 +13,7 @@ public class SalusDbContext : DbContext
 
     public DbSet<Afiliado> Afiliados => Set<Afiliado>();
     public DbSet<Medico> Medicos => Set<Medico>();
+    public DbSet<Procedimiento> Procedimientos => Set<Procedimiento>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
