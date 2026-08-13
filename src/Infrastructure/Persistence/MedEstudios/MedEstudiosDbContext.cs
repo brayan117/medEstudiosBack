@@ -17,6 +17,7 @@ public class MedEstudiosDbContext : DbContext
     public DbSet<Tecnico> Tecnicos => Set<Tecnico>();
     public DbSet<Agenda> Agendas => Set<Agenda>();
     public DbSet<Estudio> Estudios => Set<Estudio>();
+    public DbSet<EstadoEstudio> EstadoEstudios => Set<EstadoEstudio>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -3,7 +3,11 @@ using Domain.Entities;
 
 namespace Application.Interfaces.Services;
 
-public interface IAgendaService
+public interface IAgendaService 
 {
-    
+    Task<Agenda> CrearAgendaAsync(Agenda agenda);
+    Task<Agenda> ObtenerAgendaPorIdAsync(int id);
+    Task<IEnumerable<Agenda>> ObtenerTodasLasAgendasAsync();
+    Task<Agenda> ActualizarAgendaAsync(Agenda agenda);
+    Task<bool> EliminarAgendaAsync(int id);
 }

@@ -21,6 +21,11 @@ public class EstudioRepository : IEstudiosRepository
         return _context.Estudios.FindAsync(id).AsTask();
     }
 
+    public async Task<List<Estudio>> GetAllAsync()
+    {
+        return await _context.Estudios.ToListAsync();
+    }
+
     public Task<Estudio> AddAsync(Estudio estudio)
     {
         _context.Estudios.Add(estudio);

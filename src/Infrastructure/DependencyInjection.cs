@@ -13,6 +13,7 @@ using Infrastructure.Persistence.Salus.Repositories;
 using Application.Interfaces.Repositories.Salus;
 using Application.Interfaces.Services.Salus;
 using Application.Services.Salus;
+using Application.UseCases;
 
 
 namespace Infrastructure;
@@ -43,6 +44,7 @@ public static class DependencyInjection
         services.AddScoped<IAuditoriaRepository, AuditoriaRepository>();
         services.AddScoped<ITecnicoRespository, TecnicoRepository>();
         services.AddScoped<IEstudiosRepository, EstudioRepository>();
+        services.AddScoped<IEstadoEstudioRepository, EstadoEstudioRepository>();
 
         //servicios de autenticacion
         services.AddScoped<AuthService>();
@@ -53,6 +55,11 @@ public static class DependencyInjection
         services.AddScoped<IAfiliadoService, AfiliadoService>();
         services.AddScoped<IProcedimientoService, ProcedimientoService>();
         services.AddScoped<IMedicoService, MedicoService>();
+        services.AddScoped<IEstudioService, EstudioService>();
+        services.AddScoped<IEstadoEstudioService, EstadoEstudioService>();
+
+        //Casos de uso
+        services.AddScoped<CrearEstudioCitaUseCase>();
 
         //servicios de current user
         services.AddScoped<ICurrentUser, CurrentUserService>();

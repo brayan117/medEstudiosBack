@@ -28,7 +28,7 @@ namespace Application.Services
         }
 
 
-        public async Task<LoginResponseDTO> Login(LoginRequestDTO request)
+        public async Task<LoginResponseDTO?> Login(LoginRequestDTO request)
         {
             var usuario = await _usuariosRepository.GetUserByUsernameAsync(request.username);
             
