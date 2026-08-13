@@ -9,4 +9,6 @@ public class Agenda
     public TimeSpan? fecha_fin_real { get; set; }           
     public int? duracion_estimada { get; set; }
     public string? notas_procedimiento { get; set; }
+
+    public Estudio? Estudio { get; set; }
 }

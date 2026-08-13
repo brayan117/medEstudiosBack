@@ -46,4 +46,9 @@ public class AgendaService : IAgendaService
         await _repository.DeleteAsync(agenda);
         return true;
     }
+    
+    public async Task<List<Agenda>> ObtenerAgendasPorFechaProgramadaAsync(DateTime fechainicio, DateTime fechaFin)
+    {
+        return await _repository.GetAgendasAsyncByDate(fechainicio, fechaFin);
+    }
 }

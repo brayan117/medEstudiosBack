@@ -10,5 +10,4 @@ public class CitaDTO{
     public string prioridad {get; set;}
 
     public string notas_procedimiento {get; set;}
-
 }

@@ -44,5 +44,18 @@ public class EstudioRepository : IEstudiosRepository
         return Task.CompletedTask;
     }
 
-   
+    public async Task<List<Estudio>> GetAgendasAsyncByDate(DateTime start, DateTime end)
+    {
+        return await _context.Estudios
+            .Where(e => e.fecha_programada >= start && e.fecha_programada <= end)
+            .ToListAsync();
+    }
+
+    public async Task<List<Estudio>> GetEstudiosByIdsAsync(List<int> ids)
+    {
+        return await _context.Estudios
+            .Where(e => ids.Contains(e.Id))
+            .ToListAsync();
+    }
+
 }

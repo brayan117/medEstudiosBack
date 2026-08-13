@@ -53,4 +53,9 @@ public class MedicoRepository : IMedicoRepository
         
         return result;
     }
+
+    public Task<Medico?> GetMedicoByIdAsync(int id)
+    {
+        return _context.Medicos.FirstOrDefaultAsync(m => m.id == id);
+    }
 }

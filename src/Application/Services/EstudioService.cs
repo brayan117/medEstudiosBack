@@ -48,4 +48,9 @@ public class EstudioService : IEstudioService
         await _estudioRepository.DeleteAsync(estudio);
         return true;
     }
+
+    public async Task<List<Estudio>> ObtenerEstudiosPorFechaProgramadaAsync(DateTime fecha_inicio, DateTime fecha_fin)
+    {
+        return await _estudioRepository.GetAgendasAsyncByDate(fecha_inicio, fecha_fin);
+    }
 }

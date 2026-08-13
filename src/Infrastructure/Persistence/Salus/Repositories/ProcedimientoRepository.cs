@@ -15,6 +15,11 @@ public class ProcedimientoRepository : IProcedimientoRepository
         _context = context;
     }
 
+    public Task<Procedimiento?> GetProcedimientoByIdAsync(int id)
+    {
+        return _context.Procedimientos.FirstOrDefaultAsync(p => p.id_codigo == id);
+    }
+
     public Task<List<Procedimiento>> GetProcedimientoByGrupoAsync(string grupo)
     {
         return _context.Procedimientos

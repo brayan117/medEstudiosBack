@@ -8,7 +8,7 @@ public class EstadoEstudioConfiguration : IEntityTypeConfiguration<EstadoEstudio
 {
     public void Configure(EntityTypeBuilder<EstadoEstudio> entity)
     {
-        entity.ToTable("ESTADO_ESTUDIO");
+        entity.ToTable("ESTADOS_ESTUDIO");
 
         entity.HasKey(x => x.Id);
 

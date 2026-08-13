@@ -1,5 +1,6 @@
 using Domain.Entities;
 using Application.DTOs;
+using Application.DTOs.Cita;
 
 namespace Application.Mappers;
 
@@ -23,6 +24,28 @@ public static class CitaMapper {
         return new Agenda {
             fecha_programada = cita.fecha_programada,
             notas_procedimiento = cita.notas_procedimiento
+        };
+    }
+
+    public static ObtenerCitaDTO AgendaYEstudioAObtenerCitaDTO (
+        Agenda agenda,
+        Estudio estudio,
+        string estado,
+        string nombrePaciente,
+        string nombreEstudio,
+        string nombreMedico)
+    {
+        return new ObtenerCitaDTO
+        {
+            id_agenda = agenda.id,
+            id_estudio = estudio.Id,
+            fecha_programada = agenda.fecha_programada,
+            estado = estado,
+            nombre_paciente = nombrePaciente,
+            nombre_estudio = nombreEstudio,
+            nombre_medico = nombreMedico,
+            prioridad = estudio.prioridad,
+            notas_procedimiento = agenda.notas_procedimiento
         };
     }
 

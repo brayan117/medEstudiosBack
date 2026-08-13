@@ -10,4 +10,5 @@ public interface IAgendaService
     Task<IEnumerable<Agenda>> ObtenerTodasLasAgendasAsync();
     Task<Agenda> ActualizarAgendaAsync(Agenda agenda);
     Task<bool> EliminarAgendaAsync(int id);
+    Task<List<Agenda>> ObtenerAgendasPorFechaProgramadaAsync(DateTime fechainicio, DateTime fechaFin);
 }

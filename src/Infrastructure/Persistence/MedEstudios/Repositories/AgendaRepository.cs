@@ -51,5 +51,19 @@ public class AgendaRepository : IAgendaRepository
             .ToListAsync();
     }
 
+    public async Task<List<Agenda>> ObtenerAgendasPorFechaProgramadaAsync(DateTime fechainicio, DateTime fechaFin)
+    {
+        return await _context.Agendas
+            .Where(a => a.fecha_programada >= fechainicio && a.fecha_programada <= fechaFin)
+            .ToListAsync();
+    }
+
+    public async Task<Agenda> ObtenerAgendaPorIdEstudioAsync(int idEstudio)
+    {
+        return await _context.Agendas
+            .Where(a => a.estudio_id == idEstudio)
+            .FirstOrDefaultAsync();
+    }
+
 
 }

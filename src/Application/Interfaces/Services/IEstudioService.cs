@@ -10,4 +10,5 @@ public interface IEstudioService
     Task<IEnumerable<Estudio>> ObtenerTodosLosEstudiosAsync();
     Task<Estudio> ActualizarEstudioAsync(Estudio estudio);
     Task<bool> EliminarEstudioAsync(int id);
+    Task<List<Estudio>> ObtenerEstudiosPorFechaProgramadaAsync(DateTime fecha_inicio, DateTime fecha_fin);
 }

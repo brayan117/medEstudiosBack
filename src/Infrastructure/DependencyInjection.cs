@@ -62,6 +62,7 @@ public static class DependencyInjection
 
         //Casos de uso
         services.AddScoped<CrearEstudioCitaUseCase>();
+        services.AddScoped<ObtenerCitasEstudioUseCase>();
 
         //servicios de current user
         services.AddScoped<ICurrentUser, CurrentUserService>();

@@ -19,12 +19,16 @@ public class UnitOfWork : IUnitOfWork
 
     public Task CommitTransactionAsync()
     {
-        return _context.Database.CommitTransactionAsync();
+        return _context.Database.CurrentTransaction == null
+            ? Task.CompletedTask
+            : _context.Database.CommitTransactionAsync();
     }
 
     public Task RollbackTransactionAsync()
     {
-        return _context.Database.RollbackTransactionAsync();
+        return _context.Database.CurrentTransaction == null
+            ? Task.CompletedTask
+            : _context.Database.RollbackTransactionAsync();
     }
     
     public Task SaveChangesAsync()

@@ -32,6 +32,10 @@ public class AgendaConfiguration: IEntityTypeConfiguration<Agenda>
             
         entity.Property(x => x.notas_procedimiento)
             .HasColumnName("NOTAS_PROCEDIMIENTO");
+
+        entity.HasOne(x => x.Estudio)
+            .WithMany()
+            .HasForeignKey(x => x.estudio_id);
     }
     
 }

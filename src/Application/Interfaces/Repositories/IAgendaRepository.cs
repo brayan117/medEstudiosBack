@@ -10,4 +10,6 @@ public interface IAgendaRepository
     Task<Agenda> AddAsync(Agenda agenda);
     Task UpdateAsync(Agenda agenda);
     Task DeleteAsync(Agenda agenda);
+    Task<List<Agenda>> ObtenerAgendasPorFechaProgramadaAsync(DateTime fechainicio, DateTime fechaFin);
+    Task<Agenda> ObtenerAgendaPorIdEstudioAsync(int idEstudio); 
 }
