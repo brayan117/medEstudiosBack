@@ -26,8 +26,6 @@ public class AgendaConfiguration: IEntityTypeConfiguration<Agenda>
 
         entity.Property(x => x.fecha_fin_real)
             .HasColumnName("FECHA_FIN_REAL");
-        entity.Property(x => x.tecnico_asignado_id)
-            .HasColumnName("TECNICO_ASIGNADO_ID");
             
         entity.Property(x => x.duracion_estimada)
             .HasColumnName("DURACION_ESTIMADA");

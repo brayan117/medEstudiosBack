@@ -8,6 +8,8 @@ public class Estudio
     public int? tecnico_principal_id {get; set;}
     public int tipo_estudio_id {get; set;}
     public DateTime fecha_solicitud {get; set;}
+    public DateTime fecha_programada {get; set;}
+    public DateTime fecha_realizacion {get; set;}
     public int estado_id {get; set;}
     public string? motivo_estudio {get; set;}
     public string? observaciones {get; set;}

@@ -29,6 +29,12 @@ public class EstudioConfiguration : IEntityTypeConfiguration<Estudio>
 
         entity.Property(e => e.fecha_solicitud)
         .HasColumnName("FECHA_SOLICITUD");
+        
+        entity.Property(e => e.fecha_programada)
+        .HasColumnName("FECHA_PROGRAMADA");
+        
+        entity.Property(e => e.fecha_realizacion)
+        .HasColumnName("FECHA_REALIZACION");
 
         entity.Property(e => e.estado_id)
         .HasColumnName("ESTADO_ID");
