@@ -45,6 +45,7 @@ public static class DependencyInjection
         services.AddScoped<ITecnicoRespository, TecnicoRepository>();
         services.AddScoped<IEstudiosRepository, EstudioRepository>();
         services.AddScoped<IEstadoEstudioRepository, EstadoEstudioRepository>();
+        services.AddScoped<IAgendaRepository, AgendaRepository>();
 
         //servicios de autenticacion
         services.AddScoped<AuthService>();
@@ -57,6 +58,7 @@ public static class DependencyInjection
         services.AddScoped<IMedicoService, MedicoService>();
         services.AddScoped<IEstudioService, EstudioService>();
         services.AddScoped<IEstadoEstudioService, EstadoEstudioService>();
+        services.AddScoped<IAgendaService, AgendaService>();
 
         //Casos de uso
         services.AddScoped<CrearEstudioCitaUseCase>();
@@ -64,6 +66,9 @@ public static class DependencyInjection
         //servicios de current user
         services.AddScoped<ICurrentUser, CurrentUserService>();
         services.AddHttpContextAccessor();
+
+        //logica de transacciones
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }

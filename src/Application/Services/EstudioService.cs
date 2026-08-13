@@ -17,7 +17,6 @@ public class EstudioService : IEstudioService
     public async Task<Estudio> CrearEstudioAsync(Estudio estudio)
     {
         var result = await _estudioRepository.AddAsync(estudio);
-        await _estudioRepository.SaveChangesAsync();
         return result;
     }
 
@@ -35,7 +34,6 @@ public class EstudioService : IEstudioService
     public async Task<Estudio> ActualizarEstudioAsync(Estudio estudio)
     {
         await _estudioRepository.UpdateAsync(estudio);
-        await _estudioRepository.SaveChangesAsync();
         return estudio;
     }
 
@@ -48,7 +46,6 @@ public class EstudioService : IEstudioService
         }
 
         await _estudioRepository.DeleteAsync(estudio);
-        await _estudioRepository.SaveChangesAsync();
         return true;
     }
 }

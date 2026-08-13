@@ -44,8 +44,5 @@ public class EstudioRepository : IEstudiosRepository
         return Task.CompletedTask;
     }
 
-    public Task SaveChangesAsync()
-    {
-        return _context.SaveChangesAsync();
-    }
+   
 }

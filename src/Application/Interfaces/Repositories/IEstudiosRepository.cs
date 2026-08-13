@@ -9,5 +9,4 @@ public interface IEstudiosRepository
     Task<Estudio> AddAsync(Estudio estudio);
     Task UpdateAsync(Estudio estudio);
     Task DeleteAsync(Estudio estudio);
-    Task SaveChangesAsync();
 }

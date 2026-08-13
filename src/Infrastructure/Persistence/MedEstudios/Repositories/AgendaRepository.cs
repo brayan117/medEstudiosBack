@@ -15,29 +15,34 @@ public class AgendaRepository : IAgendaRepository
         _context = context;
     }
 
+    public Task<Agenda?> GetByIdAsync(int id)
+    {
+        return _context.Agendas.FindAsync(id).AsTask();
+    }
+
+    public Task<List<Agenda>> GetAllAsync()
+    {
+        return _context.Agendas.ToListAsync();
+    }
+
     public async Task<Agenda> AddAsync(Agenda agenda)
     {
         await _context.Agendas.AddAsync(agenda);
-        await _context.SaveChangesAsync();
         return agenda;
     }
 
-    public async Task UpdateAsync(Agenda agenda)
+    public Task UpdateAsync(Agenda agenda)
     {
         _context.Agendas.Update(agenda);
-        await _context.SaveChangesAsync();
+        return Task.CompletedTask;
     }
 
-    public async Task DeleteAsync(Agenda agenda)
+    public Task DeleteAsync(Agenda agenda)
     {
         _context.Agendas.Remove(agenda);
-        await _context.SaveChangesAsync();
+        return Task.CompletedTask;
     }
 
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
-    }
 
     public async Task<List<Agenda>> GetAgendasAsyncByDate(DateTime start, DateTime end)
     {
