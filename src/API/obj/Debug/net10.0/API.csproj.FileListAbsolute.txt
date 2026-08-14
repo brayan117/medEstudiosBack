@@ -59,3 +59,11 @@ C:\Users\DELL\Documents\proyecto\backend\medEstudios\src\API\bin\Debug\net10.0\M
 C:\Users\DELL\Documents\proyecto\backend\medEstudios\src\API\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\DELL\Documents\proyecto\backend\medEstudios\src\API\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\DELL\Documents\proyecto\backend\medEstudios\src\API\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\appsettings.Development.json
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\appsettings.json
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.staticwebassets.endpoints.json
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.exe
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.deps.json
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.runtimeconfig.json
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.dll
+C:\Users\DELL\AppData\Local\Temp\opencode\apibuild\API.pdb

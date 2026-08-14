@@ -13,13 +13,16 @@ public class CitaController : ControllerBase
 {
     private readonly CrearEstudioCitaUseCase _crearEstudioCitaUseCase;
     private readonly ObtenerCitasEstudioUseCase _obtenerCitasEstudioUseCase;
+    private readonly EliminarAgendaUseCase _eliminarAgendaUseCase;
 
     public CitaController(
         CrearEstudioCitaUseCase crearEstudioCitaUseCase,
-        ObtenerCitasEstudioUseCase obtenerCitasEstudioUseCase)
+        ObtenerCitasEstudioUseCase obtenerCitasEstudioUseCase,
+        EliminarAgendaUseCase eliminarAgendaUseCase)
     {
         _crearEstudioCitaUseCase = crearEstudioCitaUseCase;
         _obtenerCitasEstudioUseCase = obtenerCitasEstudioUseCase;
+        _eliminarAgendaUseCase = eliminarAgendaUseCase;
     }
 
     [HttpPost]
@@ -42,6 +45,17 @@ public class CitaController : ControllerBase
         List<ObtenerCitaDTO> result =
             await _obtenerCitasEstudioUseCase
                 .ObtenerPorRangoAsync(fechaInicio, fechaFin);
+
+        return Ok(result);
+    }
+
+    [HttpDelete("{idAgenda}/estudio/{idEstudio}")]
+    [Authorize(Roles = Roles.ADMINISTRATIVO)]
+    public async Task<IActionResult> EliminarCita(int idAgenda, int idEstudio)
+    {
+        bool result =
+            await _eliminarAgendaUseCase
+                .EliminarCitaAsync(idAgenda, idEstudio);
 
         return Ok(result);
     }
